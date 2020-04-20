@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="createDeckForm" (ngSubmit)="onSubmit()">
+      <label>Deck Name</label>
+      <input
+        type="text"
+        id="deckName"
+        formControlName="deckName"
+        class="form-control"
+      />
+      <p></p>
+      <hr />
+      <label for="deckClass">Deck class</label>
+      <select id="deckClass" formControlName="deckClass">
+        <option *ngFor="let class of classes" [value]="class">
+          {{ class }}
+        </option>
+      </select>
+      <button (click)="classSelected()" type="button" class="btn btn-primary">
+        Confirm
+      </button>
+
+      <hr />
+      <div *ngIf="selectedClass"  class="cardSelect">
+        <label for="deckCards">Select a Card</label>
+        <select formControlName="deckCards" id="deckCards" name="deckCards">
+          <option *ngFor="let card of selectedClassCards" [ngValue]="card">
+            {{ card.name }}
+          </option>
+        </select>
+        <button (click)="onAddCard()" type="button" class="btn btn-primary">
+          Add Card
+        </button>
+        <ul class="cardList">
+          <li *ngFor="let card of newDeck.deckCards" > {{card.name}} - {{card.manaCost}} </li>
+        </ul>
+        <hr />
+      </div>
+      <button *ngIf="cardSelected" class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>

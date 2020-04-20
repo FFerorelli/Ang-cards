@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <h3>Select a Filter</h3>
+      <hr />
+      <select (ngModelChange) = "chooseFilter()" [formControl]="filters" id="filters" name="filters">
+        <option value="Name">
+          Name
+        </option>
+        <option value="Cost">
+          Cost
+        </option>
+        <option value="Rarity">
+          Rarity
+        </option>
+      </select>
+
+      <hr />
+      <div *ngIf="selectedFilter === 'Name'" class="nameFilter">
+        <label>Search by card name</label>
+        <input
+          [(ngModel)]="searchByName"
+          (ngModelChange)="filterByName()"
+          type="text"
+          id="searchByName"
+          class="form-control"
+        />
+      </div>
+      <div *ngIf="selectedFilter === 'Cost'" class="costFilter">
+        <label>Search by card cost</label>
+        <input
+          [(ngModel)]="searchByCost"
+          (ngModelChange)="filterByCost()"
+          type="text"
+          id="searchByCost"
+          class="form-control"
+        />
+      </div>
+      <div *ngIf="selectedFilter === 'Rarity'" class="rarityFilter">
+        <label>Select rarity</label>
+        <select (ngModelChange) = " filterByRarity()" [formControl]="rarityFilter" id="rarityFilter" name="rarityFilter">
+          <!-- <option value="" disabled selected hidden >Please Choose...</option> -->
+          <option value="common">
+            Common
+          </option>
+          <option value="rare">
+            Rare
+          </option>
+          <option value="epic">
+            Epic
+          </option>
+          <option value="legendary">
+            Legendary
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="cards">
+      <div *ngFor="let card of filteredCards" class="card">
+        <span
+          [ngClass]="{
+            common: card.rarity == 'common',
+            rare: card.rarity == 'rare',
+            epic: card.rarity == 'epic',
+            legendary: card.rarity == 'legendary'
+          }"
+        >
+          {{ card.name }}
+        </span>
+        <h4 class="inlineh4">: {{ card.manaCost }} mana - {{ card.rarity }}</h4>
+
+        <img
+          [src]="card.imagePath"
+          alt="{{ card.name }}"
+          class="img-responsive"
+          style="height: 200px;"
+        />
+      </div>
+    </div>
+  </div>
+</div>

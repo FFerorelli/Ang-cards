@@ -1,0 +1,63 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+  font-size: 2rem;
+  overflow-x: hidden;
+}
+.common {
+  color: #0faf03;
+}
+.rare {
+  color: #198eff;
+}
+.epic {
+  color: #ab48ee;
+}
+.legendary {
+  color: #f07000;
+}
+.inlineh4 {
+  display: inline;
+}
+/* .deck-item {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.deck-details{
+  padding-right: 0px;
+  padding-left: 0px;
+}
+ */
+/*
+html {
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+}
+
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+ */
+/* .decks {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+.deck-item {
+  flex-shrink: 1;
+}
+.deck-details {
+
+}
+
+ */
